@@ -1,15 +1,14 @@
 package com.practice.entitypractice.data.delivery;
 
+import com.practice.entitypractice.data.inventory.Plant;
 import org.hibernate.annotations.Nationalized;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 public class Delivery {
@@ -31,6 +30,9 @@ public class Delivery {
     
     @Type(type = "yes_no")
     private Boolean completed;
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "delivery")
+    private List<Plant> plant;
 
     public Long getId() {
         return id;

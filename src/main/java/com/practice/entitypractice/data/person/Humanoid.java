@@ -1,12 +1,11 @@
 package com.practice.entitypractice.data.person;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity //use @MappedSuperClass instead to by default create a table_per_class
+//@Inheritance(strategy = InheritanceType.JOINED)
+// InheritanceType.SINGLE_TABLE (default), InheritanceType.TABLE_PER_CLASS
 public abstract class Humanoid {
     @Id
     @GeneratedValue
