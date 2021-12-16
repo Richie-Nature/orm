@@ -11,7 +11,7 @@ public abstract class Humanoid {
     @GeneratedValue
     Long id;
 
-    @OneToMany(mappedBy = "humanoid")
+    @OneToMany(mappedBy = "humanoid", fetch = FetchType.LAZY)
     List<Outfit> outfits;
 
     public Long getId() {
@@ -22,5 +22,11 @@ public abstract class Humanoid {
         this.id = id;
     }
 
+    public List<Outfit> getOutfits() {
+        return outfits;
+    }
 
+    public void setOutfits(List<Outfit> outfits) {
+        this.outfits = outfits;
+    }
 }

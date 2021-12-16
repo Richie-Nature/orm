@@ -1,10 +1,17 @@
 package com.practice.entitypractice.data.person;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+@NamedQueries({
+        @NamedQuery(
+                name = "Outfit.findByHat",
+                query = "select o from Outfit o where o.hat = :hat"
+        ),
+        @NamedQuery(
+                name = "Outfit.findBySock",
+                query = "select 0 from Outfit o where o.sock = :sock"
+        )
+})
 @Entity
 public class Outfit {
     @Id
