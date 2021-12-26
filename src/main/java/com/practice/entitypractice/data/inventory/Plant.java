@@ -8,9 +8,10 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
 public class Plant {
     @Id
+    @GeneratedValue
     private Long id;
 
     @JsonView(Views.Public.class)
@@ -21,6 +22,7 @@ public class Plant {
     @Column(precision = 12, scale = 4)
     private BigDecimal price;
 
+    //don't retrieve delivery if we don't need it
     @ManyToOne(fetch = FetchType.LAZY) //many plants can belong to one delivery
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
@@ -47,5 +49,13 @@ public class Plant {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
     }
 }

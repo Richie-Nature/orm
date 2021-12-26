@@ -10,6 +10,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
+@NamedQuery(
+        name = "Delivery.findByRecipientName",
+        query = "Select d from Delivery d where d.recipientName = :recipientName"
+)
 @Entity
 public class Delivery {
     @Id
@@ -31,8 +35,9 @@ public class Delivery {
     @Type(type = "yes_no")
     private Boolean completed;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "delivery", cascade = {CascadeType.REMOVE})
-    private List<Plant> plant;
+    // added CascadeType.REMOVE to automatically clear any associated plants when removed
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "delivery", cascade = {CascadeType.ALL})
+    private List<Plant> plants;
 
     public Long getId() {
         return id;
@@ -74,4 +79,11 @@ public class Delivery {
         this.deliveryTime = deliveryTime;
     }
 
+    public List<Plant> getPlants() {
+        return plants;
+    }
+
+    public void setPlants(List<Plant> plants) {
+        this.plants = plants;
+    }
 }

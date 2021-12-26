@@ -21,6 +21,7 @@ public class Outfit {
     private String gloves;
     private String hat;
     private String dress;
+    private String sock;
 
     @ManyToOne
     private Humanoid humanoid;
@@ -55,5 +56,13 @@ public class Outfit {
 
     public void setDress(String dress) {
         this.dress = dress;
+    }
+
+    public String getSock() {
+        return sock;
+    }
+
+    public void setSock(String sock) {
+        this.sock = sock;
     }
 }
