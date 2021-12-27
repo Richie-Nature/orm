@@ -33,7 +33,7 @@ public class Delivery {
     private LocalDateTime deliveryTime; // includes both date and time - simpler than having two separate fields
     
     @Type(type = "yes_no")
-    private Boolean completed;
+    private Boolean completed = false;
 
     // added CascadeType.REMOVE to automatically clear any associated plants when removed
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "delivery", cascade = {CascadeType.ALL})
