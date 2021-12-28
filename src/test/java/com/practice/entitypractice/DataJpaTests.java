@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @DataJpaTest
+// @AutoConfigureTestDatabase (by default when using datajpatest, spring would use an in-memory db. This can
+        //force it to use an external db if available)
 public class DataJpaTests {
 
     @Autowired
